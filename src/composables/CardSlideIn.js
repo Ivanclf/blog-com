@@ -23,26 +23,33 @@ export function useCardSlideIn(imgSrc, duration = 2000, offset = 40) {
 
   onMounted(() => {
     let started = false;
-    if (!imgSrc) {
-      startAnim();
-      started = true;
-      return;
+    function runAnim() {
+      if (!imgSrc) {
+        startAnim();
+        started = true;
+        return;
+      }
+      const timer = setTimeout(() => {
+        if (!started) {
+          startAnim();
+          started = true;
+        }
+      }, 2000);
+      const img = new window.Image();
+      img.src = imgSrc;
+      img.onload = () => {
+        if (!started) {
+          clearTimeout(timer);
+          startAnim();
+          started = true;
+        }
+      };
     }
-    const timer = setTimeout(() => {
-      if (!started) {
-        startAnim();
-        started = true;
-      }
-    }, 2000);
-    const img = new window.Image();
-    img.src = imgSrc;
-    img.onload = () => {
-      if (!started) {
-        clearTimeout(timer);
-        startAnim();
-        started = true;
-      }
-    };
+    if (document.readyState === 'complete') {
+      runAnim();
+    } else {
+      window.addEventListener('load', runAnim);
+    }
   });
 
   return style;
