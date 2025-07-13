@@ -1,0 +1,56 @@
+/* 全局主题色与通用样式 */
+:root {
+    --page-max-width: 100%;
+    --page-side-bg: #e3f2fd93;
+    --primary-light: #9ac8e7;
+    --primary: #7abfdf;
+    --primary-dark: #949ead;
+    --card-bg: #9fd2f7;
+    --card-hover-bg: #80abce;
+    --footer-bg: #959daa;
+    --footer-text: #fff;
+    --border-color: #eee;
+    --text-main: #333;
+    --text-sub: #555;
+}
+
+body {
+    background: var(--page-side-bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Arial', sans-serif;
+    margin: 0;
+}
+
+.card {
+    background: var(--card-bg);
+    color: var(--primary);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.card:hover {
+    background: var(--card-hover-bg);
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.16);
+}
+
+.layout-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.layout-footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    border-top: 1px solid var(--border-color);
+
+
+    .main-page-container {
+        width: 80vw;
+        max-width: var(--page-max-width);
+        margin: 0 auto;
+        background: #fff;
+        min-height: 100vh;
+        box-shadow: 0 2px 16px rgba(25, 118, 210, 0.04);
+    }
+}
